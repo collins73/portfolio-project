@@ -1,14 +1,13 @@
 <!doctype html>
-{%  load staticfiles %}
 <html lang="en">
+{% load staticfiles %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Demayne Collins</title>
+    <title>Demayne Collins </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link active" href="https://twitter.com/coding_works">Twitter</a>
-            <a class="nav-item nav-link" href="{%  static 'resume.pdf' %}">Resume</a>
+            <a class="nav-item nav-link active" href="{%  static 'resume.pdf' %}">Resume</a>
             <a class="nav-item nav-link active" href=" {% url 'allblogs' %}">Blog</a>
           </div>
         </div>
@@ -34,37 +33,23 @@
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hi, I am Demayne!</h1>
-          <p class="lead text-muted">Hello, my name is Demayne and I am a Python Django web developer that loves to build beautiful websites that people can use a template for themselves. This is really fun.</p>
-          <p>
-            <a href="mailto:collinsd73@gmail.com" class="btn btn-primary my-2">Email me</a>
-            </p>
-            <img src="{% static 'myphoto.jpg' %}" height = 200 />
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-
-            {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class = "card-img-top" src="{{ job.image.url }}" />
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary }}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-
-          </div>
-        </div>
-      </div>
+      <div class="container">
+      <h1 class="text-center pt-3">My First Blog</h1>
+      <br />
+      <br />
+      <br />
+      <h2>Latest Post</h2>
+      <hr />
+     {% for blog in blogs.all %}
+    <a href="{% url 'detail' blog.id %}"<h3>{{ blog.title }}</h3></a>
+       <br />
+       {{ blog.pub_date_revised }}
+       <br />
+       <img class=".img-fluid" src="{{ blog.image.url }}" height = 200  width = 550>
+       <br />
+       <p>{{ blog.body }}</p>
+     {% endfor %}
+       </div>
 
     </main>
 
