@@ -13,7 +13,7 @@ Faker==0.8.7
 Markdown==2.6.11
 mysqlclient==1.3.12
 olefile==0.44
-Pillow==5.0.0
+Pillow==8.3.2
 posts==0.2.2
 psycopg2==2.7.4
 pycparser==2.18
